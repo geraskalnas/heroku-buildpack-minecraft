@@ -17,7 +17,7 @@ echo "-----> Starting Dropbox Sync..."
 ./bin/backup.sh download backup.zip 
 unzip backup -d server
 rm backup.zip
-eval "while true; do sleep 300; ./bin/backup.sh move backup.zip backup$(date "+%Y.%m.%d-%H:%M:%S").zip; zip -r -x server.*jar backup.zip server/*; ./bin/backup.sh upload backup.zip /; rm backup.zip; done &"
+eval "while true; do sleep 300; ./bin/backup.sh move backup.zip backup$(date "+%Y.%m.%d-%H:%M:%S").zip; zip -r backup.zip server/*; ./bin/backup.sh upload backup.zip /; rm backup.zip; done &"
 echo " done"
 dropbox_pid=$!
 
