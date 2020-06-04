@@ -62,7 +62,7 @@ echo "done"
 
 # Download dropbox uploader config file
 echo "-----> Configuring DU config file..."
-echo OAUTH_ACCESS_TOKEN=$DBCONFIG > .dropbox_uploader
+echo "OAUTH_ACCESS_TOKEN=${DBCONFIG}" > BUILD_DIR/.dropbox_uploader
 echo " done"
 
 
