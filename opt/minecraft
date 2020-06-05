@@ -15,9 +15,9 @@ ngrok_pid=$!
 
 echo "-----> Starting Dropbox Sync..."
 ./bin/backup.sh download backup.zip 
-unzip backup -d server
+unzip backup -d serverfiles
 rm backup.zip
-eval "while true; do sleep 300; ./bin/backup.sh move backup.zip backup$(date "+%Y.%m.%d-%H:%M:%S").zip; zip -r backup.zip server/*; ./bin/backup.sh upload backup.zip /; rm backup.zip; done &"
+eval "while true; do sleep 300; ./bin/backup.sh move backup.zip backup$(date "+%Y.%m.%d-%H:%M:%S").zip; zip -r backup.zip serverfiles/*; ./bin/backup.sh upload backup.zip /; rm backup.zip; done &"
 echo " done"
 dropbox_pid=$!
 
@@ -40,9 +40,9 @@ case $limit in
   ;;
 esac
 
-cd server
+cd serverfiles
 echo "Starting: minecraft 25565"
-eval "screen -L -h 2048 -dmS minecraft java -Xmx${heap} -Xms${heap} -jar minecraft.jar nogui"
+eval "screen -L -h 2048 -dmS minecraft java -Xmx${heap} -Xms${heap} -jar ../minecraft.jar nogui"
 main_pid=$!
 cd ..
 
